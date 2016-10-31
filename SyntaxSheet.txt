@@ -1,0 +1,23 @@
+{-
+- Version: 1.0
+- Author: Danny Wilson
+- Description: A list of current syntax (with descriptions) for the Sapphire programming language.
+-
+-
+-}
+
+start :: Must be placed at the beginning of each program. 
+view  :: Used to print to the console. Takes strings with ("Hello, world!"), and variables (x).
+as    :: Decleration for variables, placed after the variable name. E.g. x as int, y as bool.
+end   :: Must be placed at the end of each program. 
+
+Example program: 
+
+start;
+a as int = 5;
+b as int = 10;
+show(a+b);
+end;
+
+Will produce:
+15
