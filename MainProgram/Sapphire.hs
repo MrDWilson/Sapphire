@@ -10,7 +10,7 @@ main = do
   --Complete error check
   Info.getErrorCheckComplete
   contents <- readFile "TestingFiles/InitialTesting.txt"
-  putStrLn contents
+  print $ Parse.initialParse contents
   Info.getParsingMessage
   --Complete parsing
   Info.getParsingComplete

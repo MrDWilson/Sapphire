@@ -1,0 +1,4 @@
+start;
+~This is a comment
+error;
+end;
