@@ -1,2 +1,1 @@
 -- Haskell Playground 1.0
-initialParse "This code\nHas much text\n~With some comments here\nAnd some comments ~there"

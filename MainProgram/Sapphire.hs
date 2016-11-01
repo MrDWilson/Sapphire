@@ -1,3 +1,9 @@
+{-
+- Version: 1.0
+- Author: Danny Wilson
+- Description: Calls the required functions to parse the file.
+-}
+
 import qualified ProgramInformation.ProgramInitialiser as Info
 import qualified Parsers.Parsing as Parse
 

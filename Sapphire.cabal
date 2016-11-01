@@ -6,7 +6,8 @@ license: AllRightsReserved
 stability: experimental
 extra-source-files:
     TestingFiles/InitialTesting.txt
-    SyntaxSheet.txt
+    ExternalFiles/README.txt
+    ExternalFiles/SyntaxSheet.txt
 x-ghc-framework-version: 7.10.3-5.18-1
 x-last-ide-version: HfM1.3.0
 Executable Sapphire
