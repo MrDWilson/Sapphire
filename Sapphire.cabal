@@ -5,6 +5,7 @@ build-type: Simple
 license: AllRightsReserved
 stability: experimental
 extra-source-files:
+    TestingFiles/InitialTesting.sapphire
     SyntaxSheet.txt
 x-ghc-framework-version: 7.10.3-5.18-1
 x-last-ide-version: HfM1.3.0
@@ -17,5 +18,5 @@ Executable Sapphire
       SapphireResources
       ErrorChecking
       ProgramInformation.ProgramInitialiser
-      Parsers
+      Parsers.Parsing
       Testing

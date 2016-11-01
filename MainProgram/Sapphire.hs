@@ -1,4 +1,5 @@
 import qualified ProgramInformation.ProgramInitialiser as Info
+import qualified Parsers.Parsing as Parse
 
 main = do
   Info.getVersion
@@ -8,7 +9,8 @@ main = do
   Info.getErrorCheckMessage
   --Complete error check
   Info.getErrorCheckComplete
-  --Begin Parsing
+  contents <- readFile "TestingFiles/InitialTesting.txt"
+  putStrLn contents
   Info.getParsingMessage
   --Complete parsing
   Info.getParsingComplete

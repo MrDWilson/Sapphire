@@ -2,8 +2,6 @@
 - Version: 1.0
 - Author: Danny Wilson
 - Description: A list of current syntax (with descriptions) for the Sapphire programming language.
--
--
 -}
 
 start :: Must be placed at the beginning of each program. 

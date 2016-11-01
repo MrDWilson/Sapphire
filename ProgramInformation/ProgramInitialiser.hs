@@ -2,9 +2,6 @@
 - Version: 1.0
 - Author: Danny Wilson
 - Description: This file is used to house the version identifiers of the main program.
--
--
--
 -}
 
 module ProgramInformation.ProgramInitialiser where
