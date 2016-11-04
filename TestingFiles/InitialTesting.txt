@@ -1,0 +1,7 @@
+start;
+ ~Simple addition function
+ ~Semi colons are optional
+ a as int = 5 ~This is the first variable, a
+ b as int = 7 ~This is the second variable, b
+ show(a+b) ~prints the output of a+b
+end;
