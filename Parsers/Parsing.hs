@@ -1,5 +1,5 @@
 {-
-- Version: 1.1
+- Version: 1.2
 - Author: Danny Wilson
 - Description: The main functions to parse the files.
 -}
@@ -11,7 +11,7 @@ import Data.List
 
 --Main initial parse function to call the others
 initialParse :: String -> [String]
-initialParse x = removeEmpty $ removeWhite $ inlineComments $ removeComments $ newlineParse $ semicolonParse x
+initialParse x = removeEmpty $ removeWhite $ inlineComments $ removeComments $ newlineParse $ removeBlockComment $ semicolonParse x
   
 --Splits the string into lines (e.g. on each new line)
 newlineParse :: String -> [String]
@@ -54,3 +54,12 @@ removeWhite xs = map (dropWhileEnd (== ' '))(map (dropWhile (== ' ')) xs)
 --Remove empty elements
 removeEmpty :: [String] -> [String]
 removeEmpty xs = [x | x <- xs, x /= ""]
+
+--Remove block comments 
+removeBlockComment :: String -> String
+removeBlockComment xs
+  |'$' `notElem` xs = xs
+  |otherwise = takeWhile (/= '$') xs ++ (removeBlockComment $ removeBlockComment' xs)
+  
+removeBlockComment' :: String -> String
+removeBlockComment' xs = drop 1 $ dropWhile (/= '$') $ drop 1 $ snd $ break ('$'==) xs

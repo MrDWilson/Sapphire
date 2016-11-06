@@ -1,5 +1,5 @@
 {-
-- Version: 1.0
+- Version: 1.1
 - Author: Danny Wilson
 - Description: Calls the required functions to parse the file.
 -}

@@ -1,5 +1,5 @@
 {-
-- Version: 1.1
+- Version: 1.2
 - Author: Danny Wilson
 - Description: This file is used to house the version identifiers of the main program.
 -}
@@ -8,11 +8,11 @@ module ProgramInformation.ProgramInitialiser where
 
 -- getVersion will return the current version of the parsing program
 getVersion :: IO()
-getVersion = putStrLn "Sapphire: Version 1.1"
+getVersion = putStrLn "Sapphire: Version 1.2"
 
 -- getDateBegun will return the date the current version was begun
 getDateBegun :: IO()
-getDateBegun = putStrLn "Date begun: Monday, 31st October, 2016"
+getDateBegun = putStrLn "Date begun: Sunday 6th November, 2016"
 
 -- getErrorCheckMessage will be printed to console when checking begins
 getErrorCheckMessage :: IO()
