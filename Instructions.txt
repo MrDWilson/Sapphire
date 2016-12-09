@@ -1,0 +1,17 @@
+Hello, and welcome to Sapphire.
+
+Writing programs in Sapphire is simple and quick, converting to Scala code
+rather than using it's own compiler.
+
+Please refer to the External Files folder, the Syntax Sheet in particular
+so you understand the Syntax.
+
+Then, using Atom to write your files (Atom package for Sapphire can be found
+here... https://atom.io/packages/language-sapphire, or by searching for
+language-sapphire within Atom).
+
+After you have wrote your Sapphire program, make sure to save it in the
+SapphireExecutables folder! Then run the Sapphire.sh script (with ./sapphire.sh), enter your file
+name and let it parse. Sapphire will convert the code into Scala, and then
+execute the code for you. To look at the Scala source file, simply enter the
+ScalaExecutables folder and open it. 
