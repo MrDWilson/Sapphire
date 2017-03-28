@@ -18,4 +18,25 @@ start test
  show("I have " + intTwo + " apples!")
  show(intOne/intTwo*intThree/intTwo*2);
 
+ testOne as Int = 10
+ testTwo as Int = 450
+ testThree as Int = 500
+
+ result as Int = 0
+
+ if testOne < testTwo -> result := testOne
+  | testTwo < testThree -> result := testTwo
+  | testThree < testOne -> result := testThree
+  | otherwise -> show("Error in if statement.")
+ fi
+
+ i as Int = 0
+
+ do i < 10
+  i = i+1
+  show("i: " + i)
+ od
+
+ show(result)
+
 end;
