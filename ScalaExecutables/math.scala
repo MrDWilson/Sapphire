@@ -62,6 +62,36 @@ return minimum
 
 }
 
+def EorO(a:Int) : String = {
+
+var answer : String = ""
+
+if(a%2 == 0) {
+answer = "Even"}
+else {
+answer = "Odd"}
+
+
+return answer
+
+}
+
+def prime(a:Int) : Boolean = {
+
+var answer : Boolean = true
+var i : Int = 2
+
+while(i!=a){
+if(a%i == 0) {
+answer = false}
+
+i = i+1
+}
+
+return answer
+
+}
+
 println("7+4 = " + add(7,4))
 println()
 println("8-3 = " + subtract(8,3))
@@ -75,5 +105,10 @@ println()
 println("Max 11, 5 = " + max(11,5))
 println()
 println("Min 40, 75 = " + min(40, 75))
+println()
+println("Is 6 odd or even = " + EorO(6))
+println()
+println("Is 420 a prime number = " + prime(420))
+println()
 
 }

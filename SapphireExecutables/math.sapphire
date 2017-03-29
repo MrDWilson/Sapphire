@@ -56,6 +56,33 @@ fun min(a as Int, b as Int: Int)
 
 nuf
 
+fun EorO(a as Int : String)
+
+  answer as String = ""
+
+  if a%2 == 0 -> answer := "Even"
+  |otherwise -> answer := "Odd"
+  fi
+
+  result answer
+
+nuf
+
+fun prime(a as Int : Boolean)
+
+  answer as Boolean = true
+  i as Int = 2
+
+  do i != a
+    if a%i == 0 -> answer := false
+    fi
+    i = i+1
+  od
+
+  result answer
+
+nuf
+
 show("7+4 = " + add(7,4))
 show()
 show("8-3 = " + subtract(8,3))
@@ -69,5 +96,10 @@ show()
 show("Max 11, 5 = " + max(11,5))
 show()
 show("Min 40, 75 = " + min(40, 75))
+show()
+show("Is 6 odd or even = " + EorO(6))
+show()
+show("Is 420 a prime number = " + prime(420))
+show()
 
 end
