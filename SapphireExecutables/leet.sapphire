@@ -1,0 +1,12 @@
+start leet
+
+a as Int = 10
+b as Int = 30
+step as Int = 2
+
+do a != b
+  show("A: " + a + ", B: " + b)
+  a = a+step
+od
+
+end

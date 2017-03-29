@@ -22,11 +22,11 @@ start test
  testTwo as Int = 450
  testThree as Int = 500
 
- result as Int = 0
+ lol as Int = 0
 
- if testOne < testTwo -> result := testOne
-  | testTwo < testThree -> result := testTwo
-  | testThree < testOne -> result := testThree
+ if testOne < testTwo -> lol := testOne
+  | testTwo < testThree -> lol := testTwo
+  | testThree < testOne -> lol := testThree
   | otherwise -> show("Error in if statement.")
  fi
 
@@ -37,6 +37,13 @@ start test
   show("i: " + i)
  od
 
- show(result)
+ show(printTime(10,7))
+
+ show(lol)
+
+
+ fun printTime (a as Int, b as Int : Int)
+  result a+b
+ nuf
 
 end;

@@ -10,10 +10,11 @@ module Parsers.Parsing where
 
 import Data.List
 import Data.List.Split
+import Data.Char
 
 --Main initial parse function to call the others
 initialParse :: String -> String
-initialParse x = concat $ addNewLines $ parseTime (removeEmpty $ removeWhite $ inlineComments $ removeComments $ newlineParse $ removeBlockComment $ semicolonParse x)
+initialParse x = concat $ addNewLines $ parseTime $ (removeEmpty $ removeWhite $ inlineComments $ removeComments $ newlineParse $ removeBlockComment $ semicolonParse x)
 
 --Splits the string into lines (e.g. on each new line)
 newlineParse :: String -> [String]
@@ -57,16 +58,19 @@ removeBlockComment' xs = tail $ dropWhile (/= '$') $ tail $ snd $ break ('$'==) 
 parseLine :: String -> String
 parseLine x
  |isInfixOf "start" x = parseStart x
- |x == "end" = parseEnd
- |x == "fi" = ""
- |x == "od" = "}"
+ |isInfixOf "end" x = parseEnd
+ |isInfixOf "fun" (head $ splitOn(" ") x) = parseFun x
+ |isInfixOf "nuf" x = "}"
+ |isInfixOf "result" (head $ splitOn (" ") x) = parseResult x
+ |isInfixOf "fi" x = ""
+ |"od" == (take 2 x) = parseEnd
  |isInfixOf "do" x = parseDo x
  |isInfixOf "if" (head $ splitOn ("->") x) = parseIf x
  |isInfixOf "|" x = parseElse x
  |isInfixOf "show" x = parseShow x
  |isInfixOf "as" x = parseV $ map (parseVariable') (parseVariable x) --This could possibly not work, test!!
  |isInfixOf "=" x = x
- |otherwise = ""
+ |otherwise = x
 
 
 --Parsing variables
@@ -83,7 +87,7 @@ parseVariable' x
   |otherwise = x
 
 --Parsing for simple statements
-parseStart x = "object " ++ (concat $ tail $ splitOn (" ") x) ++ " extends App {"
+parseStart x = "object " ++ (filter (isLetter) $ concat $ tail $ splitOn (" ") x) ++ " extends App {"
 
 parseEnd = "}"
 
@@ -97,7 +101,7 @@ formatIf xs = [x | x <- xs, x /= ':']
 
 --Get the Scala statement ready
 readyIf :: [String] -> String
-readyIf xs = "if(" ++ head xs ++ ") {" ++ last xs ++ "}"
+readyIf xs = "if(" ++ head xs ++ ") {" ++ ("\n" ++ last xs) ++ "}"
 
 --Parsing for else statements
 parseElse :: String -> String
@@ -105,14 +109,52 @@ parseElse x = readyElse $ checkShow $ removeWhite $ map formatIf $ splitOn "->" 
 
 readyElse :: [String] -> String
 readyElse xs
-  | isInfixOf "otherwise" (head xs) = "else {" ++ last xs ++ "}"
-  | otherwise = "else if(" ++ head xs ++ ") {" ++ last xs ++ "}"
+  | isInfixOf "otherwise" (head xs) = "else {" ++ ("\n" ++ last xs) ++ "}"
+  | otherwise = "else if(" ++ head xs ++ ") {" ++ ("\n" ++ last xs) ++ "}"
 
 parseDo :: String -> String
 parseDo x = doReady $ drop 2 x
 
 doReady :: String -> String
-doReady x = "while(" ++ (dropWhite x) ++ "){"
+doReady x = "while(" ++ (filter (isPrint) $ dropWhite x) ++ "){"
+
+parseFun :: String -> String
+parseFun x = "def " ++ parseFunN x ++ "(" ++ parseFunV x ++ ") : " ++ (filter (isLetter) $ parseFunR x) ++ " = {"
+
+parseFunN :: String -> String
+parseFunN x = trim $ head $ splitOn ("(") $ drop 4 x
+
+parseFunR :: String -> String
+parseFunR x = checkR $ trim $ concat $ tail $ splitOn(":") $ init x
+
+checkR :: String -> String
+checkR x
+  |x == "none" = "Unit"
+  |otherwise = x
+
+--Code for getting the function variables ready
+parseFunV :: String -> String
+parseFunV xs = checkComma $ parseFunV' (head $ splitOn(":") $ init $ concat $ tail $ splitOn ("(") xs)
+
+parseFunV' :: String -> String
+parseFunV' x = parseFunV'' $ tuplify (concat $ map removeWhite $ map (splitOn("as")) $ splitOn(",") x)
+
+parseFunV'' :: [(String, String)] -> String
+parseFunV'' ((a,b):xs) = a ++ ":" ++ b ++ "," ++ parseFunV'' xs
+parseFunV'' [] = []
+
+tuplify :: [String] -> [(String,String)]
+tuplify [] = []
+tuplify (k:v:ts) = (k,v) : tuplify ts
+tuplify xs = error (concat xs)
+
+checkComma :: String -> String
+checkComma x
+  |(last x) == ',' = init x
+  | otherwise = x
+
+parseResult :: String -> String
+parseResult x = "return " ++ (concat $ tail $ splitOn (" ") x)
 
 checkShow :: [String] -> [String]
 checkShow xs
@@ -137,7 +179,7 @@ takeShow' :: String -> String
 takeShow' xs = tail $ takeWhile (/= ')') $ tail $ snd $ break (')' ==) xs
 
 parseShow' :: String -> String
-parseShow' xs = takeWhile (/= ')') $ tail $ dropWhile (/= '(') xs
+parseShow' xs = init $ filter (isPrint) $ tail $ dropWhile (/= '(') xs
 
 --Rename please
 parseTime :: [String] -> [String]
@@ -146,3 +188,8 @@ parseTime xs = map (parseLine) xs
 --Can maybe do this without a dedicated function?
 addNewLines :: [String] -> [String]
 addNewLines xs = map (++ "\n") xs
+
+--trim whitespace
+trim :: String -> String
+trim = f . f
+  where f = reverse . dropWhile isSpace

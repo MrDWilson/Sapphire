@@ -1,18 +1,3 @@
-start temp
-
-show("A program that prints F-C conversion.")
-
-lower as Int = 0
-upper as Int = 300
-step as Int = 20
-
-celsius as Int = 0
-fahr as Int = lower
-
-do fahr <= upper
-  celsius = 5 * (fahr - 32) / 9
-  show(fahr + "," + celsius)
-  fahr = fahr + step
-od
+start hello
 
 end

@@ -11,16 +11,20 @@ println(intOne/intTwo*intThree/intTwo*2)
 var testOne : Int = 10
 var testTwo : Int = 450
 var testThree : Int = 500
-var result : Int = 0
-if(testOne < testTwo) {result = testOne}
-else if(testTwo < testThree) {result = testTwo}
-else if(testThree < testOne) {result = testThree}
+var lol : Int = 0
+if(testOne < testTwo) {lol = testOne}
+else if(testTwo < testThree) {lol = testTwo}
+else if(testThree < testOne) {lol = testThree}
 else {println("Error in if statement.")}
 
 var i : Int = 0
-while( i < 10){
+while(i<10){
 i = i+1
 println("i: " + i)
 }
-println(result)
+println(printTime(10,7))
+println(lol)
+def printTime(a:Int,b:Int) : Int = {
+return a+b
+}
 }

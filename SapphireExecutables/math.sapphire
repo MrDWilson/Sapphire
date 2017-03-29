@@ -1,0 +1,73 @@
+start math
+
+fun add(a as Int, b as Int : Int)
+
+  result a+b
+
+nuf
+
+fun subtract(a as Int, b as Int : Int)
+
+  result a-b
+
+nuf
+
+fun divide(a as Int, b as Int : Int)
+
+  result a/b
+
+nuf
+
+fun multiply(a as Int, b as Int : Int)
+
+  result a*b
+
+nuf
+
+fun mod(a as Int, b as Int: Int)
+
+  result a%b
+
+nuf
+
+fun max(a as Int, b as Int : Int)
+
+  maximum as Int = 0
+
+  if a<b -> maximum := b
+  | b<a -> maximum := a
+  | otherwise -> maximum := 0
+  fi
+
+  result maximum
+
+nuf
+
+fun min(a as Int, b as Int: Int)
+
+  minimum as Int = 0
+
+  if a<b -> minimum := a
+  | b<a -> minimum := b
+  | otherwise -> minimum := 0
+  fi
+
+  result minimum
+
+nuf
+
+show("7+4 = " + add(7,4))
+show()
+show("8-3 = " + subtract(8,3))
+show()
+show("10/5 = " + divide(10,5))
+show()
+show("10*5 = " + multiply(10,5))
+show()
+show("8%3 = " + mod(8,3))
+show()
+show("Max 11, 5 = " + max(11,5))
+show()
+show("Min 40, 75 = " + min(40, 75))
+
+end
