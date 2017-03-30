@@ -46,4 +46,8 @@ start test
   result a+b
  nuf
 
+ fun print(a as Int:none)
+  show(a)
+ nuf
+
 end;

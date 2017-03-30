@@ -2,3 +2,10 @@ Error 1: File name does not match the start name.
 Error 2: Start is missing from beginning of file.
 Error 3: End is missing from the end of the file.
 Error 4: Unrecognised line.
+Error 5: Error in a function definition.
+Error 6: Error in result statement.
+Error 7: Error in do statement.
+Error 8: Error in if statement.
+Error 9: Error in else statement.
+Error 10: Error in show statement.
+Error 11: Error in variable declaration.

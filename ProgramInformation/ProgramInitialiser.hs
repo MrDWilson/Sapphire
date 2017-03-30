@@ -12,7 +12,7 @@ getVersion = putStrLn "Sapphire: Version 2.4"
 
 -- getDateBegun will return the date the current version was begun
 getDateBegun :: IO()
-getDateBegun = putStrLn "Date begun: Sunday 6th November, 2016"
+getDateBegun = putStrLn "Date begun: Wednesday 8th February, 2017"
 
 -- getErrorCheckMessage will be printed to console when checking begins
 getErrorCheckMessage :: IO()

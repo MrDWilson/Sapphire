@@ -31,4 +31,7 @@ println(lol)
 def printTime(a:Int,b:Int) : Int = {
 return a+b
 }
+def print(a:Int) : Unit = {
+println(a)
+}
 }
