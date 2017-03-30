@@ -1,3 +1,5 @@
-start hello
+start temp
+
+show("lol")
 
 end

@@ -10,6 +10,12 @@ fi
 echo "Processing..."
 echo ""
 ./Sapphire $fileName
+if [ $? -eq 0 ]; then
+  echo SUCCESS
+else
+  echo FAILURE
+  exit 0
+fi
 fileNameScala=${fileName%.*}
 scalaFileType=".scala"
 scalaReady="$fileNameScala$scalaFileType"

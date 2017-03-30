@@ -1,3 +1,5 @@
-object hello extends App {
+object temp extends App {
+
+println("lol")
 
 }

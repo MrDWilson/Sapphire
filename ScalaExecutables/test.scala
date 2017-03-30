@@ -12,10 +12,14 @@ var testOne : Int = 10
 var testTwo : Int = 450
 var testThree : Int = 500
 var lol : Int = 0
-if(testOne < testTwo) {lol = testOne}
-else if(testTwo < testThree) {lol = testTwo}
-else if(testThree < testOne) {lol = testThree}
-else {println("Error in if statement.")}
+if(testOne < testTwo) {
+lol = testOne}
+else if(testTwo < testThree) {
+lol = testTwo}
+else if(testThree < testOne) {
+lol = testThree}
+else {
+println("Error in if statement.")}
 
 var i : Int = 0
 while(i<10){

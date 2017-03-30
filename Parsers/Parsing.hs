@@ -1,5 +1,5 @@
 {-
-- Version: 1.2
+- Version: 2.4
 - Author: Danny Wilson
 - Description: The main functions to parse the files.
 -}
