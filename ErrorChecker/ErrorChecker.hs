@@ -17,8 +17,8 @@ import Data.Char
 --Main function to call the error checkers
 errorCheck :: [String] -> IO()
 errorCheck x
-  |(controller x) == x = putStrLn "Complete"
-  |otherwise = putStrLn "Failed"
+  |(controller x) == x = putStr ""
+  |otherwise = putStrLn "Failed." --This will never be executed, but is needed for the code to compile.
 
 --Controller to call all error check functions
 controller :: [String] -> [String]
