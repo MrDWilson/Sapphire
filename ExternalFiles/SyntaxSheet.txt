@@ -1,22 +1,63 @@
 {-
-- Version: 1.0
+- Version: 1.9
 - Author: Danny Wilson
 - Description: A list of current syntax (with descriptions) for the Sapphire programming language.
 -}
 
-start :: Must be placed at the beginning of each program. 
-show  :: Used to print to the console. Takes strings with ("Hello, world!"), and variables (x).
-as    :: Decleration for variables, placed after the variable name. E.g. x as Int, y as Bool.
-end   :: Must be placed at the end of each program. 
+start     :: Must be placed at the beginning of each program.
+show      :: Used to print to the console. Takes strings with ("Hello, world!"), and variables (x).
+as        :: Decleration for variables, placed after the variable name. E.g. x as Int, y as Bool.
+end       :: Must be placed at the end of each program.
+if        :: Example below. Use to assess a boolean and execute a result.
+fi        :: End an if.
+otherwise :: Used as a default if statement decider.
+|         :: Used as an else.
+do        :: To form loops (example below).
+od        :: End a do.
+fun       :: Declare a function.
+none      :: Used is a function has no return value.
 
-Example program: 
+Example program:
 
 ~Semi colons are optional!
 start;
+
 a as Int = 5;
 b as Int = 10;
-show(a+b);
+
+answer as Int = 0
+
+if a<b -> answer := b
+| b<a -> answer := a
+| otherwise -> answer := 0
+fi
+
+i as Int = 1
+
+show("Counting to your number...")
+
+do i<=answer
+  count(i)
+  i++
+od
+
+fun count(i as Int: none)
+  show(i)
+nuf
+
 end;
 
 Will produce:
-15
+
+Counting to your number...
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10

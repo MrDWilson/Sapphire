@@ -4,8 +4,6 @@
 - Description: The main functions to parse the files.
 -}
 
---IMPORTANT:: Change the list (when comments are removed etc) to a tuple list, with (line, line number, number of indentations
-
 module Parsers.Parsing where
 
 import Data.List
@@ -68,14 +66,14 @@ parseLine x
  |isInfixOf "if" (head $ splitOn ("->") x) = parseIf x
  |isInfixOf "|" x = parseElse x
  |isInfixOf "show" x = parseShow x
- |isInfixOf "as" x = parseV $ map (parseVariable') (parseVariable x) --This could possibly not work, test!!
+ |isInfixOf "as" x = parseV $ map (parseVariable') (parseVariable x)
  |isInfixOf "=" x = x
  |otherwise = x
 
 
 --Parsing variables
 parseV :: [String] -> String
-parseV xs = "var " ++ concat xs --Unhard code the indentation
+parseV xs = "var " ++ concat xs
 
 parseVariable :: String -> [String]
 parseVariable x = splitOn " " x
@@ -86,7 +84,7 @@ parseVariable' x
   |x == "=" = " = "
   |otherwise = x
 
---Parsing for simple statements
+--Parsing for start and end statements
 parseStart x = "object " ++ (filter (isLetter) $ concat $ tail $ splitOn (" ") x) ++ " extends App {"
 
 parseEnd = "}"
@@ -112,12 +110,14 @@ readyElse xs
   | isInfixOf "otherwise" (head xs) = "else {" ++ ("\n" ++ last xs) ++ "}"
   | otherwise = "else if(" ++ head xs ++ ") {" ++ ("\n" ++ last xs) ++ "}"
 
+--Parsing for do statements
 parseDo :: String -> String
 parseDo x = doReady $ drop 2 x
 
 doReady :: String -> String
 doReady x = "while(" ++ (filter (isPrint) $ dropWhite x) ++ "){"
 
+--Parsing functions
 parseFun :: String -> String
 parseFun x = "def " ++ parseFunN x ++ "(" ++ parseFunV x ++ ") : " ++ (filter (isLetter) $ parseFunR x) ++ " = {"
 
@@ -127,6 +127,7 @@ parseFunN x = trim $ head $ splitOn ("(") $ drop 4 x
 parseFunR :: String -> String
 parseFunR x = checkR $ trim $ concat $ tail $ splitOn(":") $ init x
 
+--Check if return type is none
 checkR :: String -> String
 checkR x
   |x == "none" = "Unit"
@@ -143,49 +144,44 @@ parseFunV'' :: [(String, String)] -> String
 parseFunV'' ((a,b):xs) = a ++ ":" ++ b ++ "," ++ parseFunV'' xs
 parseFunV'' [] = []
 
+--To turn the variables into tuples
 tuplify :: [String] -> [(String,String)]
 tuplify [] = []
 tuplify (k:v:ts) = (k,v) : tuplify ts
 tuplify xs = error (concat xs)
 
+--Make sure a comma is not placed on the end
 checkComma :: String -> String
 checkComma x
   |(last x) == ',' = init x
   | otherwise = x
 
+--Parse result statements
 parseResult :: String -> String
 parseResult x = "return " ++ (concat $ tail $ splitOn (" ") x)
 
+--New parsing for show statements (fixes function bug)
 checkShow :: [String] -> [String]
 checkShow xs
   |isInfixOf "show" (last xs) = head xs : parseShow (last xs) : []
   |otherwise = xs
 
+--Parse show statements
 parseShow x = "println(" ++ parseShow' x ++ ")" --Unhard code the indentation
 
+--Drop white space
 dropWhite :: String -> String
 dropWhite xs = [x | x <- xs, x /= ' ']
 
 --Code for parsing show statements
-
---Potentially not needed
-takeShow :: String -> String
-takeShow xs
-  |'(' `notElem` xs = error "Show statements must be enclosed in ()"
-  |otherwise = dropWhile(/= '(') xs ++ (takeShow $ takeShow' xs)
-
---Potentially not needed
-takeShow' :: String -> String
-takeShow' xs = tail $ takeWhile (/= ')') $ tail $ snd $ break (')' ==) xs
-
 parseShow' :: String -> String
 parseShow' xs = init $ filter (isPrint) $ tail $ dropWhile (/= '(') xs
 
---Rename please
+--Begin the parsing
 parseTime :: [String] -> [String]
 parseTime xs = map (parseLine) xs
 
---Can maybe do this without a dedicated function?
+--Add new lines back to the list
 addNewLines :: [String] -> [String]
 addNewLines xs = map (++ "\n") xs
 

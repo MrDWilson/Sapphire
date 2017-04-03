@@ -1,5 +1,5 @@
 {-
-- Version: 1.1
+- Version: 1.2
 - Author: Danny Wilson
 - Description: The main functions to error check the files.
 - Note: All error checks will have an equvilant H function.
