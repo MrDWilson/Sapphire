@@ -1,0 +1,102 @@
+start onehundred
+
+i as Int = 0
+
+show(i)
+i = i+1
+show(i)
+i = i+1
+show(i)
+i = i+1
+show(i)
+i = i+1
+show(i)
+i = i+1
+show(i)
+i = i+1
+show(i)
+i = i+1
+show(i)
+i = i+1
+show(i)
+i = i+1
+show(i)
+i = i+1
+show(i)
+i = i+1
+show(i)
+i = i+1
+show(i)
+i = i+1
+show(i)
+i = i+1
+show(i)
+i = i+1
+show(i)
+i = i+1
+show(i)
+i = i+1
+show(i)
+i = i+1
+show(i)
+i = i+1
+show(i)
+i = i+1
+show(i)
+i = i+1
+show(i)
+i = i+1
+show(i)
+i = i+1
+show(i)
+i = i+1
+show(i)
+i = i+1
+show(i)
+i = i+1
+show(i)
+i = i+1
+show(i)
+i = i+1
+show(i)
+i = i+1
+show(i)
+i = i+1
+show(i)
+i = i+1
+show(i)
+i = i+1
+show(i)
+i = i+1
+show(i)
+i = i+1
+show(i)
+i = i+1
+show(i)
+i = i+1
+show(i)
+i = i+1
+show(i)
+i = i+1
+show(i)
+i = i+1
+show(i)
+i = i+1
+show(i)
+i = i+1
+show(i)
+i = i+1
+show(i)
+i = i+1
+show(i)
+i = i+1
+show(i)
+i = i+1
+show(i)
+i = i+1
+show(i)
+i = i+1
+show(i)
+i = i+1
+
+end

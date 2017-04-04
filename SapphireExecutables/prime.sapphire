@@ -1,0 +1,21 @@
+start prime
+
+fun prime(a as Int : Boolean)
+
+  answer as Boolean = true
+  i as Int = 2
+
+  do i != a
+    if a%i == 0 -> answer := false
+    fi
+    i = i+1
+  od
+
+  result answer
+
+nuf
+
+show(prime(421))
+show(prime(420))
+
+end

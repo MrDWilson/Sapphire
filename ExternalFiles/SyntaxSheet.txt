@@ -16,6 +16,7 @@ do        :: To form loops (example below).
 od        :: End a do.
 fun       :: Declare a function.
 none      :: Used is a function has no return value.
+result    :: Equal to return in other languages.
 
 Example program:
 

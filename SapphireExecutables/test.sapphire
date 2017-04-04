@@ -9,7 +9,7 @@ start test
  b as Int = 7 ~This is the second variable, b
  show(a+b) ~prints the output of a+b
 
- ~if we wanted something a little more confusing (testing)...
+ ~if we wanted something a little more complex...
 
  intOne as Int = 10;
  intTwo as Int = 20
@@ -38,8 +38,6 @@ start test
  od
 
  show(printTime(10,7))
-
- show(lol)
 
 
  fun printTime (a as Int, b as Int : Int)

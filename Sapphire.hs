@@ -11,7 +11,6 @@ import System.Environment
 import Data.List.Split
 
 main = do
-  --(fileName1:fileName2:_) <- getArgs
   args <- getArgs
   let fileName = head args
   contents <- readFile ("SapphireExecutables/" ++ fileName)

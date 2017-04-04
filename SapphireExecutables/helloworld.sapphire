@@ -1,0 +1,5 @@
+start helloworld
+
+show("Hello, world!")
+
+end

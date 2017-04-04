@@ -130,7 +130,7 @@ parseFunR x = checkR $ trim $ concat $ tail $ splitOn(":") $ init x
 --Check if return type is none
 checkR :: String -> String
 checkR x
-  |x == "none" = "Unit"
+  |(filter (isPrint) x) == "none" = "Unit"
   |otherwise = x
 
 --Code for getting the function variables ready
